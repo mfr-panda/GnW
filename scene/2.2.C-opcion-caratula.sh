@@ -6,16 +6,16 @@ usuario="kde"
 consola="mario"
 caratula="0"
 
-dialog --backtitle "G&W $consola - Utilidades de flasheo ------------------ INFO: 2.2.C-opcion-caratula.sh Usuario = $usuario   ////   Consola seleccionada = $consola ------------------" \
---title "G&W $consola menu caratulas" \
---msgbox "Bienvenido al menu de opcion de flasheo  con caratulas. Elige simplemente activar o desactivar." 0 0
-dialog --backtitle "G&W $consola - Utilidades de flasheo ------ INFO: 2.2.C-opcion-caratula.sh Usuario = $usuario   ////   Consola seleccionada = $consola   //// Opcion caratula = $caratula (0=NO y 1=SI) -----" \
---title "G&W $consola CFW + Retro-Go /// INFO: Usuario=$usuario --- Consola seleccionada=$consola --- Opcion caratula=$caratula (0=NO y 1=SI)" \
+dialog --backtitle "G&W $consola - Utilitaires de flash ------------------ INFO: 2.2.C-opcion-caratula.sh Utilisateur = $usuario   ////   Console sélectionnée = $consola ------------------" \
+--title "G&W $consola menu jaquettes" \
+--msgbox "Bienvenue dans le menu d’options Flash avec jaquettes. Choisissez simplement d'activer ou de désactiver." 0 0
+dialog --backtitle "G&W $consola - Utilitaires de flash ------ INFO: 2.2.C-opcion-caratula.sh Utilisateur = $usuario   ////   Console sélectionnée = $consola   //// Option jaquettes = $caratula (0=NO y 1=YES) -----" \
+--title "G&W $consola CFW + Retro-Go /// INFO: Utilisateur=$usuario --- Console sélectionnée=$consola --- Option jaquettes=$caratula (0=NO y 1=YES)" \
 --ok-label Apply \
 --cancel-label Exit \
---menu "Selecciona con las flechas la opcion deseada:" 14 140 15 \
-   A "Activar el flasheo con caratulas de juegos" \
-   D "Desactivar el flasheo con caratulas de juegos"   2>"${INPUT}"
+--menu "Sélectionnez l'option souhaitée avec les flèches:" 14 140 15 \
+   A "Activer le flash avec les jaquettes de jeux" \
+   D "Désactiver le flash avec les jaquettes de jeux"   2>"${INPUT}"
 menuitem=$(<"${INPUT}")
 case $menuitem in
   A)clear
@@ -43,9 +43,9 @@ case $menuitem in
     sed -i 's/^caratula=.*$/'caratula=\""1"\"'/g' ./scene/2.2.6-cfw-retro-go-256mb-zelda.sh
     sed -i 's/^caratula=.*$/'caratula=\""1"\"'/g' ./scene/2.2.C-opcion-caratula.sh
     sed -i 's/^caratula=.*$/'caratula=\""1"\"'/g' ./menu.sh
-    dialog --backtitle "G&W $consola - Utilidades de flasheo ------------------ INFO: 2.2.C-opcion-caratula.sh Usuario = $usuario ------------------" \
-    --title "G&W $consola menu caratulas" \
-    --msgbox "Opcion caratulas ACTIVADA. NOTA:Para flashear caratulas de roms en el menú hará falta colocar en el mismo directorio de la rom un archivo jpg, bmp o png con el mismo nombre de la rom y el propio programa se encargara de comprimirla y subirla a la G&W." 0 0
+    dialog --backtitle "G&W $consola - Utilitaires de flash ------------------ INFO: 2.2.C-opcion-caratula.sh Utilisateur = $usuario ------------------" \
+    --title "G&W $consola menu jaquettes" \
+    --msgbox "Option jaquettes ACTIVÉ. REMARQUE : Pour flasher les jaquettes de roms dans le menu, vous devrez placer un fichier jpg, bmp ou png du même nom que la rom dans le même répertoire que la rom et le programme se chargera de le compresser et de le télécharger sur le G&W." 0 0
     #sleep 5;;
 	clear;;
   D)clear
@@ -73,9 +73,9 @@ case $menuitem in
     sed -i 's/^caratula=.*$/'caratula=\""0"\"'/g' ./scene/2.2.6-cfw-retro-go-256mb-zelda.sh
     sed -i 's/^caratula=.*$/'caratula=\""0"\"'/g' ./scene/2.2.C-opcion-caratula.sh
     sed -i 's/^caratula=.*$/'caratula=\""0"\"'/g' ./menu.sh
-    dialog --backtitle "G&W $consola - Utilidades de flasheo ------------------ INFO: 2.2.C-opcion-caratula.sh Usuario = $usuario ------------------" \
-    --title "G&W $consola menu caratulas" \
-    --msgbox "Opcion caratulas DESACTIVADA." 0 0
+    dialog --backtitle "G&W $consola - Utilitaires de flash ------------------ INFO: 2.2.C-opcion-caratula.sh Utilisateur = $usuario ------------------" \
+    --title "G&W $consola menu jaquettes" \
+    --msgbox "Option jaquettes DÉSACTIVÉE." 0 0
     #sleep 5;;
 	clear;;
 esac

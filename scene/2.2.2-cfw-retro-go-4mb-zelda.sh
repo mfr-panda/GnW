@@ -7,22 +7,22 @@ consola="zelda"
 proc="4"
 caratula="0"
 
-dialog --backtitle "G&W $consola - Utilidades de flasheo ------------------ INFO: 2.2.2-cfw-retro-go-4mb-zelda.sh Usuario = $usuario   ////   Consola seleccionada = $consola ------------------" \
---title "G&W CFW + Retro-Go 4MB /// INFO: Usuario=$usuario --- Consola seleccionada=$consola --- Roms en /home/$usuario/game-and-watch-retro-go/roms/" \
+dialog --backtitle "G&W $consola - Utilitaires de flash ------------------ INFO: 2.2.2-cfw-retro-go-4mb-zelda.sh Utilisateur = $usuario   ////   Console sélectionnée = $consola ------------------" \
+--title "G&W CFW + Retro-Go 4MB /// INFO: Utilisateur=$usuario --- Console sélectionnée=$consola --- Roms en /home/$usuario/game-and-watch-retro-go/roms/" \
 --ok-label Apply \
 --cancel-label Exit \
 --menu "
-Usuario actual: $usuario
-Consola seleccionada: $consola
-Opcion caratulas: $caratula (0=NO y 1=SI)
+Utilisateur actuel: $usuario
+Console sélectionnée: $consola
+Option jaquettes: $caratula (0=NO y 1=SI)
 Roms: /home/$usuario/game-and-watch-retro-go/roms/
 
-Selecciona con las flechas la opcion deseada:" 0 0 0 \
-   H "Herramientas y utilidades" \
-   1 "CFW con los parametros para 4MB" \
-   2 "Compilar Retro-Go con los parametros para 4MB" \
-   3 "Flashear Retro-Go con los parametros para 4MB" \
-   4 "Descarga y restauracion de saves-states con parametros 4MB"   2>"${INPUT}"
+Sélectionnez l'option souhaitée avec les flèches:" 0 0 0 \
+   H "Outils et utilitairess" \
+   1 "CFW avec les paramètres pour 4Mo" \
+   2 "Compilez Retro-Go avec les paramètres de 4 Mo" \
+   3 "Flasher Retro-Go avec les paramètres pour 4 Mo" \
+   4 "Téléchargez et restaurez les états de sauvegarde avec des paramètres de 4 Mo"   2>"${INPUT}"
 menuitem=$(<"${INPUT}")
 case $menuitem in
   H)clear
@@ -30,31 +30,31 @@ case $menuitem in
     ./scene/2.2.2-cfw-retro-go-4mb-$consola.sh
     clear;;
   1)clear
-    dialog --backtitle "G&W $consola - Utilidades de flasheo" \
-    --title "Instalar Retro-Go en consola G&W $consola con 4MB" \
-    --yesno "Se recomienda realizar el proceso con la batería cargada al 100% para evitar problemas. Este proceso es solamente para una consola con el chip de 4MB instalado (chip original).\n\n¡¡¡ATENCION!!!\nSI SE TIENE DIFERENTE CANTIDAD DE MEMORIA CANCELAR EL PROCESO y una vez vuelto al menu seleccionar el correcto.\n\nSe flasheara un custom firmware que consta del menu original de la consola ademas del emulador Retro-Go. El emulador aparecera al realizar el combo de botones \"LEFT\" + \"GAME\". Las roms que existan en /home/$usuario/game-and-watch-retro-go/roms/ tambien se subiran a la consola ¿Deseas continuar?" 0 0
+    dialog --backtitle "G&W $consola - Utilitaires de flash" \
+    --title "Installer Retro-Go sur la console G&W $consola avec 4MB" \
+    --yesno "l est recommandé d'effectuer le processus avec la batterie chargée à 100 % pour éviter des problèmes. Ce processus concerne uniquement une console avec la puce de 4 Mo installée (puce d'origine).\n\n¡¡¡ATTENTION!!!\nSI VOUS AVEZ UNE QUANTITÉ DE MÉMOIRE DIFFÉRENTE, ANNULEZ LE PROCESSUS et une fois revenu au menu, sélectionnez lA BONNE MÉMOIRE.\n\nUn firmware personnalisé sera flashé et comprendra le menu d'origine de la console en plus de l'émulateur Retro-Go. L'émulateur apparaîtra lorsque vous effectuerez la combinaison de boutons \"LEFT\" + \"GAME\". Les roms qui existent dans /home/$usuario/game-and-watch-retro-go/roms/ seront également téléchargés sur la console ¿Voulez-vous continuer?" 0 0
     ans=$?
     if [ $ans -eq 0 ]; then
         clear
         if [ -f /home/$usuario/gameandwatch/game-and-watch-backup/backups/flash_backup_$consola.bin ]; then
-            echo "flash_backup_$consola.bin encontrado"
+            echo "flash_backup_$consola.bin trouvé"
             sleep 0.5
             if [ -f /home/$usuario/gameandwatch/game-and-watch-backup/backups/internal_flash_backup_$consola.bin ]; then
-                echo "internal_flash_backup_$consola.bin encontrado"
+                echo "internal_flash_backup_$consola.bin trouvé"
                 sleep 0.5
                 cp /home/$usuario/gameandwatch/game-and-watch-backup/backups/flash_backup_$consola.bin /home/$usuario/gameandwatch/game-and-watch-patch
                 cp /home/$usuario/gameandwatch/game-and-watch-backup/backups/internal_flash_backup_$consola.bin /home/$usuario/gameandwatch/game-and-watch-patch
                 echo " "
-                echo "Se han copiado los archivos de la flash interna y externa"
+                echo "Les archives de la flash interne et externe ont été copiées"
                 echo " "
                 echo " "
-                echo "Proceso 1/2 concluido."
+                echo "Processus 1/2 terminé."
                 echo " "
-                echo -e "\e[1;34mSi ya has ejecutado esta opcion anteriormente y algo ha salido mal desmonta la consola y vuelve a ejecutar esta\e[0m"
-                echo -e "\e[1;34mopcion y, al llegar a este punto, desconecta la bateria y vuelve a conectarla antes de realizar lo siguiente.\e[0m"
+                echo -e "\e[1;34mSi vous avez déjà exécuté cette option auparavant et que quelque chose ne va pas, déconnectez la console et exécutez à nouveau cette option.\e[0m"
+                echo -e "\e[1;34moption et, à ce stade, débranchez la batterie et rebranchez-la avant de procéder comme suit.\e[0m"
                 echo " "
                 echo " "
-                echo -e "\e[1;31mPulsa y manten pulsado el boton de encendido y justo despues pulsa cualquier tecla para continuar...\e[0m"
+                echo -e "\e[1;31mAppuyez et maintenez le bouton d'alimentation, puis appuyez sur n'importe quelle touche pour continuer...\e[0m"
                 read -n 1 -s -r -p ""
                 clear
                 cd /home/$usuario/gameandwatch/game-and-watch-patch
@@ -64,30 +64,30 @@ case $menuitem in
                 cd -
                 echo " "
                 echo " "
-                echo "Proceso 2/2 concluido."
-                read -n 1 -s -r -p "Presiona cualquier tecla para continuar"
+                echo "Processus 2/2 terminé."
+                read -n 1 -s -r -p "Appuyez sur n'importe quelle touche pour continuer"
             else
-                echo "No se ha encontrado internal_flash_backup_$consola.bin, cancelando..."
+                echo "internal_flash_backup_$consola.bin introuvable, annulation..."
                 sleep 2
             fi
         else
-            echo "No se ha encontrado flash_backup_$consola.bin, cancelando..."
+            echo "flash_backup_$consola.bin introuvable, annulation..."
             sleep 2
         fi
-        dialog --backtitle "G&W $consola - Utilidades de flasheo" \
-        --title "Instalar firmware original + Retro-Go  en consola con 4MB" \
-        --msgbox "Proceso realizado." 0 0
+        dialog --backtitle "G&W $consola - Utilitaires de flash" \
+        --title "Installez le firmware d'origine + Retro-Go sur la console avec 4 Mo" \
+        --msgbox "Processus effectué." 0 0
     else
-            dialog --backtitle "G&W $consola - Utilidades de flasheo" \
-            --title "Instalar firmware original + Retro-Go  en consola con 4MB" \
-            --msgbox "Proceso cancelado." 0 0
+            dialog --backtitle "G&W $consola - Utilitaires de flash" \
+            --title "Installez le firmware d'origine + Retro-Go sur la console avec 4 Mo" \
+            --msgbox "Processus annulé." 0 0
     fi
     ./scene/2.2.2-cfw-retro-go-4mb-$consola.sh
     clear;;
   2)clear
-    dialog --backtitle "G&W $consola - Utilidades de flasheo" \
-    --title "Compilar Retro-Go" \
-    --yesno "Se procedera a compilar RetroGo y se incluiran las roms que existan en /home/$usuario/game-and-watch-retro-go/roms/. ¿Deseas continuar?" 0 0
+    dialog --backtitle "G&W $consola - Utilitaires de flash" \
+    --title "Compiler Retro-Go" \
+    --yesno "RetroGo sera compilé et les roms qui existent dans /home/$usuario/game-and-watch-retro-go/roms/ seront incluses. ¿Voulez-vous continuer?" 0 0
     ans=$?
     if [ $ans -eq 0 ]; then
         clear
@@ -97,46 +97,46 @@ case $menuitem in
         cd -
         echo " "
         echo " "
-        read -n 1 -s -r -p "Proceso concluido. Presiona cualquier tecla para continuar."
-        dialog --backtitle "G&W $consola - Utilidades de flasheo" \
-        --title "Compilar Retro-Go" \
-        --msgbox "Proceso realizado." 0 0
+        read -n 1 -s -r -p "Processus terminé. Appuyez sur n'importe quelle touche pour continuer."
+        dialog --backtitle "G&W $consola - Utilitaires de flash" \
+        --title "Compiler Retro-Go" \
+        --msgbox "Processus effectué." 0 0
     else
-        dialog --backtitle "G&W $consola - Utilidades de flasheo" \
-        --title "Compilar Retro-Go" \
-        --msgbox "Proceso cancelado." 0 0
+        dialog --backtitle "G&W $consola - Utilitaires de flash" \
+        --title "Compiler Retro-Go" \
+        --msgbox "Processus annulé." 0 0
     fi
     ./scene/2.2.2-cfw-retro-go-4mb-$consola.sh
     clear;;
   3)clear
-    dialog --backtitle "G&W $consola - Utilidades de flasheo" \
-    --title "Compilar Retro-Go" \
-    --yesno "Se recomienda realizar el proceso con la batería cargada al 100% para evitar problemas. Se flasheara solamente el emulador Retro-Go por lo que no tendremos el menu original. Las roms que existan en /home/$usuario/game-and-watch-retro-go/roms/ tambien se subiran a la consola." 0 0
+    dialog --backtitle "G&W $consola - Utilitaires de flash" \
+    --title "Compiler Retro-Go" \
+    --yesno "Il est recommandé d'effectuer le processus avec la batterie chargée à 100 % pour éviter des problèmes. Seul l’émulateur Retro-Go sera flashé donc nous n’aurons pas le menu original. Les roms qui existent dans /home/$usuario/game-and-watch-retro-go/roms/ seront également téléchargées sur la console." 0 0
     ans=$?
     if [ $ans -eq 0 ]; then
         clear
         echo " "
-        echo -e "\e[1;34mSi ya has ejecutado esta opcion anteriormente y algo ha salido mal desmonta la consola y vuelve a ejecutar esta\e[0m"
-        echo -e "\e[1;34mopcion y, al llegar a este punto, desconecta la bateria y vuelve a conectarla antes de realizar lo siguiente.\e[0m"
+        echo -e "\e[1;34mSi vous avez déjà exécuté cette option auparavant et que quelque chose ne va pas, démontez la console et exécutez à nouveau cette option.\e[0m"
+        echo -e "\e[1;34moption et, à ce stade, débranchez la batterie et rebranchez-la avant de procéder comme suit.\e[0m"
         echo " "
         echo " "
-        echo -e "\e[0;32mSi durante el siguiente proceso nos dice que ha fallado el flasheo, que no puede conectar y nos pregunta si\e[0m"
-        echo -e "\e[0;32mvamos a hacer un power cycle (quitar bateria, reconectar y encender) pulsaremos el boton de encendido y lo \e[0m"
-        echo -e "\e[0;32mmantendremos pulsado unos segundos, le diremos que si con \"y\" (yes), entonces el proceso continuara.\e[0m"
-        echo -e "\e[1;31mPulsa y manten pulsado el boton de encendido y justo despues pulsa cualquier tecla para continuar...\nATENCION: No sueltes el boton al menos hasta que empiece a borrar la memoria externa (cuando pone \"Erasing xxxx bytes...\" en la pantalla)\e[0m"
+        echo -e "\e[0;32mSi au cours du processus suivant, il nous indique que le Flash a échoué, qu'il ne peut pas se connecter, il faudra effectuer\e[0m"
+        echo -e "\e[0;32mfaire un cycle d'alimentation (retirer la batterie, reconnecter et allumer), appuyer sur le bouton d'alimentation et \e[0m"
+        echo -e "\e[0;32mle maintenir quelques secondes, nous dirons oui avec \"y\" (oui), puis le processus continuera.\e[0m"
+        echo -e "\e[1;31mAppuyez et maintenez le bouton d'alimentation, puis appuyez sur n'importe quelle touche pour continuer...\nATTENTION : Ne relâchez pas le bouton au moins jusqu'à ce qu'il commence à effacer la mémoire externe (quand il est écrit « Erasing xxxx bytes... » sur l'écran).\e[0m"
         read -n 1 -s -r -p ""
         cd /home/$usuario/gameandwatch/game-and-watch-retro-go
         #make clean
         make -j$proc COMPRESS=lzma INTFLASH_BANK=2 EXTFLASH_SIZE=1802240 EXTFLASH_OFFSET=851968 GNW_TARGET=$consola EXTENDED=1 COVERFLOW=$caratula flash
         cd -
-        read -n 1 -s -r -p "Presiona cualquier tecla para continuar"
-        dialog --backtitle "G&W $consola - Utilidades de flasheo" \
-        --title "Instalar solo Retro-Go" \
-        --msgbox "Proceso realizado." 0 0
+        read -n 1 -s -r -p "Processus terminé. Appuyez sur n'importe quelle touche pour continuer."
+        dialog --backtitle "G&W $consola - Utilitaires de flash" \
+        --title "Installez Retro-Go uniquement" \
+        --msgbox "Processus effectué." 0 0
     else
-        dialog --backtitle "G&W $consola - Utilidades de flasheo" \
-        --title "Instalar solo Retro-Go" \
-        --msgbox "Proceso cancelado." 0 0
+        dialog --backtitle "G&W $consola - Utilitaires de flash" \
+        --title "Installez Retro-Go uniquement" \
+        --msgbox "Processus annulé." 0 0
     fi
     ./scene/2.2.2-cfw-retro-go-4mb-$consola.sh
     clear;;

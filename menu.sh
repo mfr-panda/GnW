@@ -33,7 +33,7 @@ Sélectionnez l'option souhaitée avec les flèches:" 0 0 0 \
    1 "Changement d'utilisateur. IMPORTANT : la première fois, il est indispensable de l'exécuter pour un fonctionnement correct" \
    2 "Changement de modèle de console (actuel = $console). IMPORTANT : Choisissez le bon modèle pour un fonctionnement correct" \
    3 "Menu d'installation des packages et programmes nécessaires et mise à jour du firmware STLINK" \
-   4 "Menu interface: backup/restauration/déblocage, flashage personnalisé avec Retro-Go et états de sauvegarde/restauration" \
+   4 "Menu scene: backup/restauration/déblocage, flashage personnalisé avec Retro-Go et états de sauvegarde/restauration" \
    5 "Mettre à jour le dépôt local de ces scripts" 2>"${INPUT}"
 menuitem=$(<"${INPUT}")
 case $menuitem in

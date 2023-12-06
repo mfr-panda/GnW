@@ -7,27 +7,27 @@ consola="zelda"
 proc="4"
 caratula="0"
 
-dialog --backtitle "G&W $consola - Utilidades de flasheo ------------------ INFO: 2.2-retro-go-zelda.sh Usuario = $usuario   ////   Consola seleccionada = $consola ------------------" \
---title "G&W $consola menu Retro-Go + custom firmware" \
---msgbox "El proceso de flasheo se puede realizar de diferentes maneras, elige la mas conveniente a tu hardware. Si se ha cambiado el chip de memoria deberas haber restaurado el firmware original en la opcion 5 del menu \"scene>backup, restauracion y liberacion de la consola\". NOTA: Se recomienda realizar el proceso con la batería cargada al 100% para evitar sustos." 0 0
-dialog --backtitle "G&W $consola - Utilidades de flasheo ------- INFO: 2.2-retro-go-zelda.sh Usuario = $usuario   ////   Consola seleccionada = $consola    ////    Opcion caratula=$caratula (0=NO y 1=SI) -------" \
---title "G&W $consola CFW + Retro-Go /// INFO: Usuario=$usuario --- Consola seleccionada=$consola --- Roms en /home/$usuario/game-and-watch-retro-go/roms/" \
+dialog --backtitle "G&W $consola - Utilitaires de flash ------------------ INFO: 2.2-retro-go-zelda.sh Utilisateur = $usuario   ////   Console sélectionnée = $consola ------------------" \
+--title "G&W $consola menu Retro-Go + custom firmware CFW" \
+--msgbox "Le processus de flashage peut être effectué de différentes manières, choisissez celle qui convient le mieux à votre matériel. Si la puce mémoire a été modifiée, vous devriez avoir restauré le firmware d'origine dans l'option 5 du menu. \"scene>backup, restauration et déblocage de la console\". REMARQUE : Il est recommandé d'effectuer le processus avec la batterie chargée à 100 % pour éviter les frayeurs.." 0 0
+dialog --backtitle "G&W $consola - Utilitaires de flash ------- INFO: 2.2-retro-go-zelda.sh Utilisateur = $usuario   ////   Console sélectionnée = $consola    ////    Option jaquettes=$caratula (0=NO y 1=YES) -------" \
+--title "G&W $consola CFW + Retro-Go /// INFO: Utilisateur=$usuario --- Console sélectionnée=$consola --- Roms en /home/$usuario/game-and-watch-retro-go/roms/" \
 --ok-label Apply \
 --cancel-label Exit \
 --menu "
-Usuario actual: $usuario
-Consola seleccionada: $consola
-Opcion caratulas: $caratula (0=NO y 1=SI)
+Utilisateur actuel: $usuario
+Console sélectionnée: $consola
+Option jaquettes: $caratula (0=NO y 1=YES)
 
-Selecciona con las flechas la opcion deseada:" 0 0 0 \
-   C "Opcion flasheo con caratula. Actualmente:$caratula (0=NO y 1=SI)" \
-   1 "4MB, 16MB y 64MB sin CFW: Menu flasheo solo Retro-Go + backup/restauracion save states en consola G&W $consola" \
-   2 "4MB: Menu CFW + Retro-Go + backup/restauracion save states en consola G&W $consola original" \
-   3 "16MB: Menu CFW + Retro-Go + backup/restauracion save states en consola G&W $consola" \
-   4 "64MB: Menu CFW + Retro-Go + backup/restauracion save states en consola G&W $consola" \
-   5 "128MB: Menu CFW + Retro-Go + backup/restauracion save states en consola G&W $consola" \
-   6 "256MB: Menu CFW + Retro-Go + backup/restauracion save states en consola G&W $consola" \
-   R "Actualizacion del directorio del repo local de Retro-Go"   2>"${INPUT}"
+Sélectionnez l'option souhaitée avec les flèches:" 0 0 0 \
+   C "Option flash avec jaquettes. Actuellement:$caratula (0=NO y 1=YES)" \
+   1 "4MB, 16MB et 64MB sans CFW: Menu flash uniquement Retro-Go + backup/restauration save states de la console G&W $consola" \
+   2 "4MB: Menu CFW + Retro-Go + backup/restauration save states de la console G&W $consola originale" \
+   3 "16MB: Menu CFW + Retro-Go + backup/restauration save states de la console G&W $consola" \
+   4 "64MB: Menu CFW + Retro-Go + backup/restauration save states de la console G&W $consola" \
+   5 "128MB: Menu CFW + Retro-Go + backup/restauration save states de la console G&W $consola" \
+   6 "256MB: Menu CFW + Retro-Go + backup/restauration save states de la console G&W $consola" \
+   R "Mise à jour du répertoire du dépôt local Retro-Go"   2>"${INPUT}"
 menuitem=$(<"${INPUT}")
 case $menuitem in
   C)clear

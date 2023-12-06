@@ -34,7 +34,7 @@ Console sélectionnée: $consola
 Option jaquettes: $caratula (0=NO y 1=YES)
 Save states: /home/$usuario/game-and-watch-retro-go/save_states/
 
-Sélectionnez l'option souhaitée avec les flèche:" 0 0 0 \
+Sélectionnez l'option souhaitée avec les flèches:" 0 0 0 \
           1 "4MB $consola solo Retro-Go: Effectuer un backup des états de sauvegarde existants qui se trouvent dans G&W" \
           2 "4MB $consola solo Retro-Go: Restaurer les états de sauvegarde du PC vers le G&W" \
           3 "4MB $consola solo Retro-Go: Supprimez les états de sauvegarde existants dans G&W pour le laisser propre" \

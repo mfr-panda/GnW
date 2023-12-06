@@ -7,8 +7,8 @@ clear
 if [ -d /home/$usuario/gameandwatch/game-and-watch-patch ]; then
     cd /home/$usuario/gameandwatch/game-and-watch-patch
     git pull --recurse-submodules
-    read -n 1 -s -r -p "Presiona cualquier tecla para continuar"
+    read -n 1 -s -r -p "Appuyez sur n'importe quelle touche pour continuer"
     cd -
 else
-    echo "El directorio del repo no se ha detectado, no se puede proseguir."
+    echo "Répertoire du dépôt non détecté, impossible de continuer."
 fi
