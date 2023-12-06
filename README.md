@@ -1,3 +1,17 @@
+## this a fork of GnW repo by julenvitoria
+
+- French translation (partial - completed at 100% for Zelda 64Mo utilities)
+
+**NOTE** : 
+- Python >= 3.7 is needed to satisfy Pillow 9.5.0 installation.
+
+**Install python 3.7 on Ubuntu 18.04**
+
+- sudo add-apt-repository ppa:deadsnakes/ppa -y
+- sudo apt update && apt install -y --no-install-recommends python3.7 python3.7-dev python3.7-venv
+
+ 
+
 # GnW por julenvitoria
 Game & Watch Super Mario 35th aniversary y Zelda - menus utilidades para backup, restauracion y flasheo de CFW y Retro-Go.
 

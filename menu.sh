@@ -86,7 +86,7 @@ case $menuitem in
         pip3 install -r requirements.txt
         rm requirements.txt
         echo -e "\e[1;34mRequirements pour les paquets dépréciés"
-        pip3 install --user Pillow==9.5.0 
+        pip3 install Pillow==9.5.0 
 	clear
     else
         source py/bin/activate
