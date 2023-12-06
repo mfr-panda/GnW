@@ -5,6 +5,8 @@
 **NOTE** : 
 - Python >= 3.7 is needed to satisfy Pillow 9.5.0 installation.
 
+If your system use Python 3.6, use this repo : https://github.com/mfr-panda/GnW-Pillow-8.4.0
+
 # GnW por julenvitoria
 Game & Watch Super Mario 35th aniversary y Zelda - menus utilidades para backup, restauracion y flasheo de CFW y Retro-Go.
 
