@@ -30,7 +30,11 @@ Necesitaras introducir los siguientes comandos en una ventana de terminal:
 
     cd ~
     
+    spanish :
     git clone https://github.com/julenvitoria/GnW
+    
+    or french fork :
+    git clone https://github.com/mfr-panda/GnW.git
 
 
 Una vez realizado sono tendras que acceder al directorio con:

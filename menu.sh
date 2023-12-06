@@ -22,7 +22,7 @@ else
 fi
 clear
 dialog --backtitle "G&W $consola - Utilitaires de flash ------------------ INFO: menu.sh Utilisateur = $usuario   ////   Console sélectionnée = $consola ------------------" \
---title "Game&Watch - Menu ayuda para el flasheo" \
+--title "Game&Watch - Aides pour le Flashage" \
 --ok-label Apply \
 --cancel-label Exit \
 --menu "
