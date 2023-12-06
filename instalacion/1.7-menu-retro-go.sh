@@ -4,14 +4,14 @@
 INPUT=/tmp/$MENU.sh.$$
 usuario="kde"
 
-dialog --backtitle "G&W $consola - Utilidades de flasheo ------------------ INFO: 1.7-menu-retro-go.sh Usuario = $usuario ------------------" \
---title "G&W menu emulador Retro-Go" \
+dialog --backtitle "G&W $consola - Utilitaires de flash ------------------ INFO: 1.7-menu-retro-go.sh Utilisateur = $usuario ------------------" \
+--title "G&W menu emulateur Retro-Go" \
 --ok-label Apply \
 --cancel-label Exit \
---menu "Selecciona con las flechas la opcion deseada:" 12 120 15 \
-   1 "Nueva instalacion del emulador Retro-Go" \
-   2 "Actualizacion del directorio del repo local de Retro-Go conectando al GitHub" \
-   3 "Reset del directorio del repo y descarga desde 0" 2>"${INPUT}"
+--menu "Sélectionnez l'option souhaitée avec les flèches:" 12 120 15 \
+   1 "Nouvelle installation de Retro-Go" \
+   2 "Mettez à jour le répertoire local du dépôt Retro-Go en vous connectant à GitHub" \
+   3 "Réinitialisez le répertoire du dépôt et téléchargez à partir de 0" 2>"${INPUT}"
 menuitem=$(<"${INPUT}")
 case $menuitem in
   1)clear
@@ -30,9 +30,9 @@ case $menuitem in
     if [ -d /home/$usuario/gameandwatch/game-and-watch-retro-go ]; then
         cd /home/$usuario/gameandwatch/game-and-watch-retro-go
         git pull --recurse-submodules
-        read -n 1 -s -r -p "Presiona cualquier tecla para continuar"
+        read -n 1 -s -r -p "Appuyez sur n'importe quelle touche pour continuer"
     else
-        echo "El directorio del repo no se ha detectado, no se puede proseguir."
+        echo "Répertoire du dépôt non détecté, impossible de continuer."
     fi
     clear;;
   3)clear
@@ -40,7 +40,7 @@ case $menuitem in
         cd /home/$usuario/gameandwatch/game-and-watch-retro-go
         git reset --hard
         git pull --recurse-submodules
-        read -n 1 -s -r -p "Presiona cualquier tecla para continuar"
+        read -n 1 -s -r -p "Appuyez sur n'importe quelle touche pour continuer"
     fi
     clear;;
 esac

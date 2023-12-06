@@ -12,9 +12,9 @@ sudo apt-get -y -f install
 rm openocd*
 #echo export OPENOCD=/opt/openocd-git/bin/openocd >>~/.bashrc
 if grep -q "export OPENOCD=\"/opt/openocd-git/bin/openocd\"" /home/$usuario/.bashrc ; then
-        echo "export OPENOCD=\"/opt/openocd-git/bin/openocd\" esta ya en el bashrc"
+        echo "export OPENOCD=\"/opt/openocd-git/bin/openocd\" est déjà dans le bashrc"
 else
-        echo "export OPENOCD=\"/opt/openocd-git/bin/openocd\" no esta aun en el bashrc, añadiendo..."
+        echo "export OPENOCD=\"/opt/openocd-git/bin/openocd\" n'est pas dans le bashrc, ajout..."
         sleep 2
         echo export OPENOCD=\"/opt/openocd-git/bin/openocd\" >>/home/$usuario/.bashrc
 fi
@@ -22,18 +22,18 @@ fi
 export OPENOCD="/opt/openocd-git/bin/openocd"
 sleep 3
 
-dialog --backtitle "G&W ------------------------- INFO: 1.4-openocd.sh -------------------------- Usuario = $usuario ------------------------" \
-       --title "INFO: Usuario=$usuario ---------- Instalacion openocd" \
-       --yesno "¡¡¡ATENCION!!! Se recomienda realizar un reinicio despues de instalar OPENOCD para asegurar que todo funcione correctamente. Si no lo realizas ahora recuerda hacerlo mas tarde. ¿Deseas reiniciar el sistema?" 0 0
+dialog --backtitle "G&W ------------------------- INFO: 1.4-openocd.sh -------------------------- Utilisateur = $usuario ------------------------" \
+       --title "INFO: Utilisateur=$usuario ---------- Installation openocd" \
+       --yesno "¡¡¡ATTENTION!!! Il est recommandé d'effectuer un redémarrage après l'installation d'OPENOCD pour s'assurer que tout fonctionne correctement. Si vous ne le faites pas maintenant, pensez à le faire plus tard. Voulez-vous redémarrer le système?" 0 0
     ans=$?
 if [ $ans -eq 0 ]; then
     clear
-    dialog --backtitle "G&W ------------------------- INFO: 1.4-openocd.sh -------------------------- Usuario = $usuario ------------------------" \
-           --title "INFO: Usuario=$usuario ---------- Instalacion openocd" \
-           --infobox "Reiniciando el sistema..." 0 0 ; sleep 2
+    dialog --backtitle "G&W ------------------------- INFO: 1.4-openocd.sh -------------------------- Utilisateur = $usuario ------------------------" \
+           --title "INFO: Utilisateur=$usuario ---------- Installation openocd" \
+           --infobox "Redémarrage du système..." 0 0 ; sleep 2
     sudo reboot
 else
-    dialog --backtitle "G&W ------------------------- INFO: 1.4-openocd.sh -------------------------- Usuario = $usuario ------------------------" \
-           --title "INFO: Usuario=$usuario ---------- Instalacion openocd" \
-           --infobox "Recuerda realizar el reinicio mas tarde :)" 0 0 ; sleep 2
+    dialog --backtitle "G&W ------------------------- INFO: 1.4-openocd.sh -------------------------- Utilisateur = $usuario ------------------------" \
+           --title "INFO: Utilisateur=$usuario ---------- Installation openocd" \
+           --infobox "N'oubliez pas de redémarrer plus tard :)" 0 0 ; sleep 2
 fi

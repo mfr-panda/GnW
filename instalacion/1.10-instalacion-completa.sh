@@ -20,30 +20,30 @@ sudo apt update -y
 sudo apt upgrade -y
 sudo apt install -y binutils-arm-none-eabi python3 libhidapi-hidraw0 libftdi1 libftdi1-2 git python3-pip
 clear
-echo "ATENCION: el cambio de usuario es MUY IMPORTANTE para el correcto funcionamiento de los scripts."
-echo "¡¡¡Si no se ha realizado correctamente los scripts no funcionaran correctamente!!!"
+echo "ATTENTION : le changement d'utilisateur est TRÈS IMPORTANT pour le bon fonctionnement des scripts."
+echo "¡¡¡Si cela n’a pas été fait correctement, les scripts ne fonctionneront pas correctement.!!!"
 echo " "
-echo "Por favor, indicame si realizaste el cambio de usuario con la opcion 1 del menu..."
+echo "S'il vous plaît dites-moi si vous avez changé d'utilisateur avec l'option 1 du menu..."
 echo " "
-echo -n "Si realizaste el cambio presiona presiona S para continuar, si no lo hiciste cualquier otra tecla:"
+echo -n "Si vous avez effectué la modification, appuyez sur S pour continuer, sinon sur une autre touche:"
 read -n 1 confirm
 echo
 if [ "$confirm" = "s" ]; then
     confirm="S"
     echo " "
-    echo "Se continua con la instalacion..."
+    echo "Poursuite de l'installation..."
     sleep 2
     cd /home/$usuario
     if [ -d /home/$usuario/gameandwatch ]; then
-        echo "Ya existe el directorio gameandwatch"
+        echo "Le répertoire gameandwatch existe déjà"
         sleep 2
     else
-        echo "Creando directorio gameandwatch"
+        echo "Création du répertoire gameandwatch"
         sleep 2
         mkdir /home/$usuario/gameandwatch
     fi
     if [ -d /home/$usuario/gameandwatch/gcc-arm-none-eabi-10-2020-q4-major ]; then
-        echo "Borrando directorio existente y volviendo a descargar..."
+        echo "Suppression du répertoire existant et re-téléchargement..."
         sudo rm -R /home/$usuario/gameandwatch/gcc-arm-none-eabi-10-2020-q4-major
     fi
     cd /home/$usuario/gameandwatch
@@ -52,9 +52,9 @@ if [ "$confirm" = "s" ]; then
     rm gcc-arm-none-eabi-10-2020-q4-major-x86_64-linux.tar.bz2
     export GCC_PATH=/home/$usuario/gameandwatch/gcc-arm-none-eabi-10-2020-q4-major/bin/
     if grep -q "export GCC_PATH=/home/$usuario/gameandwatch/gcc-arm-none-eabi-10-2020-q4-major/bin/" /home/$usuario/.bashrc ; then
-            echo "export GCC_PATH=/home/$usuario/gameandwatch/gcc-arm-none-eabi-10-2020-q4-major/bin/ esta ya en el bashrc"
+            echo "export GCC_PATH=/home/$usuario/gameandwatch/gcc-arm-none-eabi-10-2020-q4-major/bin/ est déjà dans le bashrc"
     else
-            echo "export GCC_PATH=/home/$usuario/gameandwatch/gcc-arm-none-eabi-10-2020-q4-major/bin/ no esta aun en el bashrc, añadiendo..."
+            echo "export GCC_PATH=/home/$usuario/gameandwatch/gcc-arm-none-eabi-10-2020-q4-major/bin/ n'est pas dans le bashrc, ajout..."
             sleep 2
             echo export GCC_PATH=/home/$usuario/gameandwatch/gcc-arm-none-eabi-10-2020-q4-major/bin/ >>/home/$usuario/.bashrc
     fi
@@ -65,9 +65,9 @@ if [ "$confirm" = "s" ]; then
     rm openocd-git*
     #echo export OPENOCD=/opt/openocd-git/bin/openocd >>~/.bashrc
     if grep -q "export OPENOCD=/opt/openocd-git/bin/openocd" /home/$usuario/.bashrc ; then
-            echo "export OPENOCD=/opt/openocd-git/bin/openocd esta ya en el bashrc"
+            echo "export OPENOCD=/opt/openocd-git/bin/openocd est déjà dans le bashrc"
     else
-            echo "export OPENOCD=/opt/openocd-git/bin/openocd no esta aun en el bashrc, añadiendo..."
+            echo "export OPENOCD=/opt/openocd-git/bin/openocd n'est pas dans le bashrc, ajout..."
             sleep 2
             echo export OPENOCD=/opt/openocd-git/bin/openocd >>/home/$usuario/.bashrc
     fi
@@ -117,19 +117,19 @@ else
     if [ "$confirm" = "S" ]; then
         confirm="S"
         echo " "
-        echo "Se continua con la instalacion..."
+        echo "Poursuite de l'installation..."
         sleep 2
         cd /home/$usuario
         if [ -d /home/$usuario/gameandwatch ]; then
-            echo "Ya existe el directorio gameandwatch"
+            echo "Le répertoire gameandwatch existe déjà"
             sleep 2
         else
-            echo "Creando directorio gameandwatch"
+            echo "Création du répertoire gameandwatch"
             sleep 2
             mkdir /home/$usuario/gameandwatch
         fi
         if [ -d /home/$usuario/gameandwatch/gcc-arm-none-eabi-10-2020-q4-major ]; then
-            echo "Borrando directorio existente y volviendo a descargar..."
+            echo "Suppression du répertoire existant et re-téléchargement..."
             sudo rm -R /home/$usuario/gameandwatch/gcc-arm-none-eabi-10-2020-q4-major
         fi
         cd /home/$usuario/gameandwatch
@@ -138,9 +138,9 @@ else
         rm gcc-arm-none-eabi-10-2020-q4-major-x86_64-linux.tar.bz2
         export GCC_PATH=/home/$usuario/gameandwatch/gcc-arm-none-eabi-10-2020-q4-major/bin/
         if grep -q "export GCC_PATH=/home/$usuario/gameandwatch/gcc-arm-none-eabi-10-2020-q4-major/bin/" /home/$usuario/.bashrc ; then
-                echo "export GCC_PATH=/home/$usuario/gameandwatch/gcc-arm-none-eabi-10-2020-q4-major/bin/ esta ya en el bashrc"
+                echo "export GCC_PATH=/home/$usuario/gameandwatch/gcc-arm-none-eabi-10-2020-q4-major/bin/ est déjà dans le bashrc"
         else
-                echo "export GCC_PATH=/home/$usuario/gameandwatch/gcc-arm-none-eabi-10-2020-q4-major/bin/ no esta aun en el bashrc, añadiendo..."
+                echo "export GCC_PATH=/home/$usuario/gameandwatch/gcc-arm-none-eabi-10-2020-q4-major/bin/ n'est pas dans le bashrc, ajout..."
                 sleep 2
                 echo export GCC_PATH=/home/$usuario/gameandwatch/gcc-arm-none-eabi-10-2020-q4-major/bin/ >>/home/$usuario/.bashrc
         fi
@@ -151,9 +151,9 @@ else
         rm openocd-git*
         #echo export OPENOCD=/opt/openocd-git/bin/openocd >>~/.bashrc
         if grep -q "export OPENOCD=/opt/openocd-git/bin/openocd" /home/$usuario/.bashrc ; then
-                echo "export OPENOCD=/opt/openocd-git/bin/openocd esta ya en el bashrc"
+                echo "export OPENOCD=/opt/openocd-git/bin/openocd est déjà dans le bashrc"
         else
-                echo "export OPENOCD=/opt/openocd-git/bin/openocd no esta aun en el bashrc, añadiendo..."
+                echo "export OPENOCD=/opt/openocd-git/bin/openocd n'est pas dans le bashrc, ajout..."
                 sleep 2
                 echo export OPENOCD=/opt/openocd-git/bin/openocd >>/home/$usuario/.bashrc
         fi
@@ -204,7 +204,7 @@ fi
 
 if [ "$confirm" != "S" ]; then
     echo " "
-    echo "Cancelado..."
+    echo "Annulé..."
     sleep 3
     exit
 fi

@@ -4,14 +4,14 @@
 INPUT=/tmp/$MENU.sh.$$
 usuario="kde"
 
-dialog --backtitle "G&W $consola - Utilidades de flasheo ------------------ INFO: 1.8-menu-patch.sh Usuario = $usuario ------------------" \
---title "G&W menu parche custom firmware para G&W" \
+dialog --backtitle "G&W $consola - Utilitaires de flash ------------------ INFO: 1.8-menu-patch.sh Utilisateur = $usuario ------------------" \
+--title "G&W menu patch custom firmware pour G&W" \
 --ok-label Apply \
 --cancel-label Exit \
---menu "Selecciona con las flechas la opcion deseada:" 12 120 15 \
-   1 "Nueva instalacion del parche custom firmware" \
-   2 "Actualizacion del directorio del repo" \
-   3 "Reset del directorio del repo y descarga desde 0" 2>"${INPUT}"
+--menu "Sélectionnez l'option souhaitée avec les flèches:" 12 120 15 \
+   1 "Nouvelle installation du patch custom firmware" \
+   2 "Mise à jour du répertoire de dépôt" \
+   3 "Réinitialisez le répertoire du dépôt et téléchargez à partir de 0" 2>"${INPUT}"
 menuitem=$(<"${INPUT}")
 case $menuitem in
   1)clear
@@ -33,9 +33,9 @@ case $menuitem in
     if [ -d /home/$usuario/gameandwatch/game-and-watch-patch ]; then
         cd /home/$usuario/gameandwatch/game-and-watch-patch
         git pull --recurse-submodules
-        read -n 1 -s -r -p "Presiona cualquier tecla para continuar"
+        read -n 1 -s -r -p "Appuyez sur n'importe quelle touche pour continuer"
     else
-        echo "El directorio del repo no se ha detectado, no se puede proseguir."
+        echo "Répertoire du dépôt non détecté, impossible de continuer."
     fi
     clear;;
   3)clear
@@ -43,7 +43,7 @@ case $menuitem in
         cd /home/$usuario/gameandwatch/game-and-watch-patch
         git reset --hard
         git pull --recurse-submodules
-        read -n 1 -s -r -p "Presiona cualquier tecla para continuar"
+        read -n 1 -s -r -p "Appuyez sur n'importe quelle touche pour continuer"
     fi
     clear;;
 esac

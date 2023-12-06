@@ -5,19 +5,19 @@ INPUT=/tmp/$MENU.sh.$$
 consola="zelda"
 
 clear
-dialog --backtitle "G&W $consola - Utilidades de flasheo ------------------ INFO: 1-menu-instalacion.sh Consola seleccionada = $consola ------------------" \
---title "Game & Watch - Menu de utilidades de flasheo" \
+dialog --backtitle "G&W $consola - Utilitaires de flash ------------------ INFO: 1-menu-instalacion.sh Console sélectionnée = $consola ------------------" \
+--title "Game & Watch - Menu Utilitaires de flash" \
 --ok-label Apply \
 --cancel-label Exit \
---menu "Selecciona con las flechas la opcion deseada:" 18 125 15 \
-   1 "Preparacion del sistema: update+upgrade+instalacion de paquetes (requerido si no se ha hecho antes)" \
-   2 "Instalacion OpenOCD" \
-   3 "Instalacion/Actualizacion del repo de las herramientas backup y restauracion" \
-   4 "Instalacion/Actualizacion del repo del flashloader" \
-   5 "Instalacion/Actualizacion del repo del emulador Retro-Go" \
-   6 "Instalacion/Actualizacion del repo del parche custom firmware para G&W Super Mario" \
-   7 "Instalacion/Actualizacion del repo del reductor para juegos LCD de Mame (LCD-Game-Shrinker)" \
-   8 "Actualizador del firmware del STLINK v2" 2>"${INPUT}"
+--menu "Sélectionnez l'option souhaitée avec les flèches:" 18 125 15 \
+   1 "Préparation du système : mise à jour+mise à niveau+installation du package (obligatoire si ce n'est pas déjà fait)" \
+   2 "Installation OpenOCD" \
+   3 "Installation/Mise à jour du dépôt des outils de sauvegarde et de restauration" \
+   4 "Installation/Mise à jour du dépôt du flashloader" \
+   5 "Installation/Mise à jour du dépôt de l'émulateur Retro-Go" \
+   6 "Installation/Mise à jour du dépôt de patchs de firmware Custom pour G&W Super Mario/Zelda" \
+   7 "Installation/Mise à jour du dépôt Mame LCD Game Shrinker (LCD-Game-Shrinker)" \
+   8 "Programme de mise à jour du micrologiciel STLINK v2" 2>"${INPUT}"
 menuitem=$(<"${INPUT}")
 case $menuitem in
   1)clear

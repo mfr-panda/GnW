@@ -4,14 +4,14 @@
 clear
 which java > java.txt
 if grep "/java" ./java.txt ; then
-        echo "Encontrado paquete java, se prosigue..."
+        echo "Package Java trouvé, continuation..."
         sleep 1
 else
-        echo "No encontrado paquete java necesario, instalando..."
+        echo "Aucun package Java nécessaire trouvé, installation..."
         echo " "
         sudo apt install -y default-jdk default-jre
         echo " "
-        echo "Instalado!!"
+        echo "Installé!!"
         sleep 1
 fi
 cd instalacion/actualizador

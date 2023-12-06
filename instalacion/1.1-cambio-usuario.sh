@@ -1,13 +1,13 @@
 #!/bin/bash
 #By julenvitoria
 
-echo "Indicame el nombre de usuario con el que quieres ejecutar las utilidades:"
+echo "Indiquez le nom d'utilisateur avec lequel vous souhaitez exécuter les utilitaires:"
 read varname
 echo " "
-echo "El nombre de usuario introducido es: $varname"
+echo "Le nom d'utilisateur saisi est: $varname"
 echo " "
-echo "¿Es correcto?"
-echo -n "Si es correcto presiona S para continuar, si no lo es cualquier otra tecla:"
+echo "¿C'est correct?"
+echo -n "Si c'est correct, appuyez sur S pour continuer, sinon sur une autre touche:"
 read -n 1 confirm
 echo
 if [ "$confirm" = "s" ]; then
@@ -49,7 +49,7 @@ if [ "$confirm" = "s" ]; then
     sed -i 's/^usuario=.*$/'usuario=\""$varname"\"'/g' ./scene/2.2.3-save-state-zelda.sh
     sed -i 's/^usuario=.*$/'usuario=\""$varname"\"'/g' ./scene/2.2.4-save-state-mario.sh
     sed -i 's/^usuario=.*$/'usuario=\""$varname"\"'/g' ./scene/2.2.4-save-state-zelda.sh
-    echo "¡¡Aplicado!!"
+    echo "¡¡Appliqué!!"
     sleep 2
 else
     if [ "$confirm" = "S" ]
@@ -92,14 +92,14 @@ else
         sed -i 's/^usuario=.*$/'usuario=\""$varname"\"'/g' ./scene/2.2.3-save-state-zelda.sh
         sed -i 's/^usuario=.*$/'usuario=\""$varname"\"'/g' ./scene/2.2.4-save-state-mario.sh
         sed -i 's/^usuario=.*$/'usuario=\""$varname"\"'/g' ./scene/2.2.4-save-state-zelda.sh
-        echo "¡¡Aplicado!!"
+        echo "¡¡Appliqué!!"
         sleep 2
     fi
 fi
 
 if [ "$confirm" != "S" ]
 then
-    echo "Cancelado..."
+    echo "Annulé..."
     sleep 3
     exit
 fi

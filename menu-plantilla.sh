@@ -3,11 +3,11 @@
 
 INPUT=/tmp/$MENU.sh.$$
 
-dialog --backtitle "G&W - Utilidades de flasheo" \
---title "G&W menu de flasheo" \
+dialog --backtitle "G&W - Utilitaires de flash" \
+--title "G&W menu de flash" \
 --ok-label Apply \
 --cancel-label Exit \
---menu "Selecciona con las flechas la opcion deseada:" 12 120 15 \
+--menu "Sélectionnez l'option souhaitée avec les flèches:" 12 120 15 \
    1 "" \
    2 "" \
    3 "" \

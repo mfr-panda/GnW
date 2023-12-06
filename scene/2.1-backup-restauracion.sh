@@ -5,117 +5,117 @@ INPUT=/tmp/$MENU.sh.$$
 usuario="kde"
 consola="zelda"
 
-dialog --backtitle "G&W $consola - Utilidades de flasheo ------------------ INFO: 2.1-backup-restauracion.sh Usuario = $usuario   ////   Consola seleccionada = $consola ------------------" \
---title "G&W menu backup/restauracion/liberacion" \
---msgbox "POR FAVOR LEER / MUY IMPORTANTE:\n\nDos normas son obligatorias:\n1ª - NUNCA desconectes el stlink del usb\n2ª - NUNCA BAJO NINGUN CONCEPTO sigas con el paso siguiente si el actual te dió error.\n\nEl proceso de liberación consta de 5 pasos. Cada uno se encarga de un proceso vital en la liberación y no se debe saltar al paso siguiente hasta haber completado el actual. En algunos pasos el ordenador nos dará instrucciones sobre como proceder. Es importante seguirlas tal y como se exponen. Ademas, en algunos momentos puede parecer que el proceso se ha parado pero no es así; algunos pasos pueden tardar hasta 5 minutos en completarse. NOTA: Se recomienda realizar el proceso con la batería cargada al 100% para evitar sustos." 0 0
-dialog --backtitle "G&W $consola - Utilidades de flasheo" \
---title "G&W menu backup/restauracion/liberacion" \
+dialog --backtitle "G&W $consola - Utilitaires de flash ------------------ INFO: 2.1-backup-restauracion.sh Utilisateur = $usuario   ////   Console sélectionnée = $consola ------------------" \
+--title "G&W menu backup/restauration/déblocage" \
+--msgbox "VEUILLEZ LIRE / TRÈS IMPORTANT:\n\nDeux règles sont obligatoires:\n1ª - Ne débranchez JAMAIS le stlink de l'usb\n2ª - NE JAMAIS passer à l'étape suivante si l'étape actuelle vous a donné une erreur.\n\nLe processus de publication comprend 5 étapes. Chacun est responsable d’un processus vital de déblocage et vous ne devez pas passer à l’étape suivante tant que vous n’avez pas terminé celle en cours. À certaines étapes, l'ordinateur nous donnera des instructions sur la façon de procéder. Il est important de les suivre exactement tels qu’ils sont indiqués. De plus, il peut parfois sembler que le processus s’est arrêté, mais ce n’est pas le cas ; certaines étapes peuvent prendre jusqu'à 5 minutes. REMARQUE : Il est recommandé d'effectuer le processus avec la batterie chargée à 100 % pour éviter les catastrophes.." 0 0
+dialog --backtitle "G&W $consola - Utilitaires de flash" \
+--title "G&W menu backup/restauration/déblocage" \
 --ok-label Apply \
 --cancel-label Exit \
 --menu "
-Consola seleccionada: $consola
+Console sélectionnée: $consola
 
-Selecciona con las flechas la opcion deseada:" 0 0 0 \
-   1 "Sanity check: comprobacion de dependencias y elementos necesarios." \
-   2 "Backup flash externa: realiza un backup de la flash SPI. No modifica el contenido." \
-   3 "Backup de la flash interna: ATENCION: se modifica el contenido de la flash SPI del punto anterior. Puede tardar hasta 5 min" \
-   4 "Desbloqueo de la consola: Desactiva la proteccion contra escritura. ATENCION: este proceso BORRA la flash del STM32" \
-   5 "Restaurar el firmware original" \
-   6 "Realizar copia de seguridad del firmware descargado" \
-   7 "Borrar firmware descargado. ATENCION: realizar si se va a flashear una nueva G&W" 2>"${INPUT}"
+Sélectionnez l'option souhaitée avec les flèches:" 0 0 0 \
+   1 "Sanity check: vérifier les dépendances et les éléments nécessaires." \
+   2 "Backup flash externe: fait une sauvegarde du flash SPI. Ne modifie pas le contenu." \
+   3 "Backup de la flash interne: ATTENTION : le contenu du flash SPI du point précédent est modifié. Cela peut prendre jusqu'à 5 minutes" \
+   4 "Déverrouillage la console : désactive la protection en écriture. ATTENTION : ce processus SUPPRIME le flash STM32" \
+   5 "Restaurer le firmware d'origine" \
+   6 "Faire une copie du firmware téléchargé" \
+   7 "Supprimez le firmware téléchargé. ATTENTION : faites ceci si vous comptez flasher un nouveau G&W" 2>"${INPUT}"
 menuitem=$(<"${INPUT}")
 case $menuitem in
   1)clear
-    dialog --backtitle "G&W $consola - Utilidades de flasheo" \
+    dialog --backtitle "G&W $consola - Utilitaires de flash" \
     --title "G&W Sanity check" \
-    --msgbox "Se realizará una comprobacion de los elementos necesarios." 0 0
+    --msgbox "Une vérification des éléments nécessaires est effectuée." 0 0
     clear
     cd /home/$usuario/gameandwatch/game-and-watch-backup
     ./1_sanity_check.sh stlink $consola
-    read -n 1 -s -r -p "Proceso realizado. Presiona cualquier tecla para continuar"
-    dialog --backtitle "G&W $consola - Utilidades de flasheo" \
+    read -n 1 -s -r -p "Processus effectué. Appuyez sur n'importe quelle touche pour continue"
+    dialog --backtitle "G&W $consola - Utilitaires de flash" \
     --title "G&W Sanity check" \
-    --msgbox "Si el proceso ha devuelto un error volver a reinstalar el software desde el menu de instalacion." 0 0
+    --msgbox "Si le processus a renvoyé une erreur, réinstallez le logiciel à partir du menu d'installation." 0 0
     cd -
     ./scene/2.1-backup-restauracion.sh
     clear;;
   2)clear
-    dialog --backtitle "G&W $consola - Utilidades de flasheo" \
-    --title "Backup flash externa" \
-    --msgbox "Se recomienda realizar el proceso con la batería cargada al 100% para evitar problemas." 0 0
+    dialog --backtitle "G&W $consola - Utilitaires de flash" \
+    --title "Backup flash externe" \
+    --msgbox "Il est recommandé d'effectuer le processus avec la batterie chargée à 100 % pour éviter des problèmes." 0 0
     clear
     cd /home/$usuario/gameandwatch/game-and-watch-backup
     ./2_backup_flash.sh stlink $consola
-    read -n 1 -s -r -p "Proceso realizado. Presiona cualquier tecla para continuar"
-    dialog --backtitle "G&W $consola - Utilidades de flasheo" \
-    --title "Backup flash externa" \
-    --msgbox "Si el proceso ha devuelto un error e indica que no se puede conectar con la consola, manten pulsado el botón de encendido y repite el proceso." 0 0
+    read -n 1 -s -r -p "Processus effectué. Appuyez sur n'importe quelle touche pour continuer"
+    dialog --backtitle "G&W $consola - Utilitaires de flash" \
+    --title "Backup flash externe" \
+    --msgbox "Si le processus a renvoyé une erreur indiquant qu'il ne peut pas se connecter à la console, maintenez enfoncé le bouton d'alimentation et répétez le processus." 0 0
     cd -
     ./scene/2.1-backup-restauracion.sh
     clear;;
   3)clear
-    dialog --backtitle "G&W $consola - Utilidades de flasheo" \
-    --title "Backup de la flash interna" \
-    --msgbox "Se recomienda realizar el proceso con la batería cargada al 100% para evitar problemas." 0 0
+    dialog --backtitle "G&W $consola - Utilitaires de flash" \
+    --title "Backup de la flash interne" \
+    --msgbox "Il est recommandé d'effectuer le processus avec la batterie chargée à 100% pour éviter des problèmes." 0 0
     clear
     cd /home/$usuario/gameandwatch/game-and-watch-backup
     ./3_backup_internal_flash.sh stlink $consola
-    read -n 1 -s -r -p "Proceso realizado. Presiona cualquier tecla para continuar"
-    dialog --backtitle "G&W $consola - Utilidades de flasheo" \
-    --title "Backup de la flash interna" \
-    --msgbox "Si el proceso ha devuelto un error e indica que no se puede conectar con la consola, manten pulsado el botón de encendido y repite el proceso." 0 0
+    read -n 1 -s -r -p "Processus effectué. Appuyez sur n'importe quelle touche pour continuer"
+    dialog --backtitle "G&W $consola - Utilitaires de flash" \
+    --title "Backup de la flash intern2" \
+    --msgbox "Si le processus a renvoyé une erreur indiquant qu'il ne peut pas se connecter à la console, maintenez enfoncé le bouton d'alimentation et répétez le processus." 0 0
     cd -
     ./scene/2.1-backup-restauracion.sh
     clear;;
   4)clear
-    dialog --backtitle "G&W $consola - Utilidades de flasheo" \
-    --title "Desbloqueo de la consola" \
-    --msgbox "Se recomienda realizar el proceso con la batería cargada al 100% para evitar problemas." 0 0
+    dialog --backtitle "G&W $consola - Utilitaires de flash" \
+    --title "Déblocage de la console" \
+    --msgbox "Il est recommandé d'effectuer le processus avec la batterie chargée à 100% pour éviter les problèmes." 0 0
     clear
     cd /home/$usuario/gameandwatch/game-and-watch-backup
     ./4_unlock_device.sh stlink $consola
-    read -n 1 -s -r -p "Proceso realizado. Presiona cualquier tecla para continuar"
-    dialog --backtitle "G&W $consola - Utilidades de flasheo" \
-    --title "Desbloqueo de la consola" \
-    --msgbox "Si el proceso ha devuelto un error e indica que no se puede conectar con la consola, manten pulsado el botón de encendido y repite el proceso." 0 0
+    read -n 1 -s -r -p "Processus effectué. Appuyez sur n'importe quelle touche pour continuer"
+    dialog --backtitle "G&W $consola - Utilitaires de flash" \
+    --title "Déblocage de la console" \
+    --msgbox "Si le processus a renvoyé une erreur indiquant qu'il ne peut pas se connecter à la console, maintenez enfoncé le bouton d'alimentation et répétez le processus." 0 0
     cd -
     ./scene/2.1-backup-restauracion.sh
     clear;;
   5)clear
-    dialog --backtitle "G&W $consola - Utilidades de flasheo" \
-    --title "Restaurar el firmware original" \
-    --msgbox "Se recomienda realizar el proceso con la batería cargada al 100% para evitar problemas." 0 0
+    dialog --backtitle "G&W $consola - Utilitaires de flash" \
+    --title "Restaurer le firmware d'origine" \
+    --msgbox "Il est recommandé d'effectuer le processus avec la batterie chargée à 100% pour éviter les problèmes." 0 0
     clear
     echo " "
     echo " "
-    echo -e "\e[1;31mPor favor, apaga la consola, despues pulsa el boton de encendido y mantenlo pulsado durante unos segundos hasta que empiece el proceso de flasheo. Mientras mantienes el boton pulsa cualquier tecla para continuar y el proceso comenzara.\e[0m"
+    echo -e "\e[1;31mVeuillez éteindre la console, puis appuyer sur le bouton d'alimentation et le maintenir enfoncé pendant quelques secondes jusqu'à ce que le processus de clignotement commence. Tout en maintenant le bouton enfoncé, appuyez sur n’importe quelle touche pour continuer et le processus commencera.\e[0m"
     read -n 1 -s -r -p ""
     cd /home/$usuario/gameandwatch/game-and-watch-backup
     ./5_restore.sh stlink $consola
     echo " "
     echo " "
     echo " "
-    echo -e "\e[1;31mProceso realizado. Quita el conector de la bateria y vuelve a conectarla, despues enciende la consola. Deberia correr el firm original.\e[0m"
+    echo -e "\e[1;31mProcessus effectué. Retirez le connecteur de la batterie et rebranchez-le, puis allumez la console. Le Frimwaree d'origine devrait fonctionner.\e[0m"
     echo " "
-    read -n 1 -s -r -p "Presiona cualquier tecla para continuar"
-    dialog --backtitle "G&W $consola - Utilidades de flasheo" \
-    --title "Restaurar el firmware original" \
-    --msgbox "Si el proceso ha devuelto un error e indica que no se puede conectar con la consola, manten pulsado el botón de encendido y repite el proceso." 0 0
+    read -n 1 -s -r -p "Appuyez sur n'importe quelle touche pour continuer"
+    dialog --backtitle "G&W $consola - Utilitaires de flash" \
+    --title "Restaurer le firmware d'origine" \
+    --msgbox "Si le processus a renvoyé une erreur indiquant qu'il ne peut pas se connecter à la console, maintenez enfoncé le bouton d'alimentation et répétez le processus.." 0 0
     cd -
     ./scene/2.1-backup-restauracion.sh
     clear;;
   6)clear
-    dialog --backtitle "G&W $consola - Utilidades de flasheo" \
-    --title "Realizar copia de seguridad del firmware descargado" \
-    --yesno "Se realizara una copia de seguridad de los archivos del firmware descargados de la consola a /home/$usuario/gameandwatch/firms/$consola. Dentro de ese directorio se creara un subdirectorio con fecha y hora del momento de ejecucion de este proceso. ¿Deseas continuar?" 0 0
+    dialog --backtitle "G&W $consola - Utilitaires de flash" \
+    --title "Faire une copie de sécurite du firmware téléchargé" \
+    --yesno "Les fichiers du firmware téléchargé depuis la console seront sauvegardés sur/home/$usuario/gameandwatch/firms/$consola. Au sein de ce répertoire, un sous-répertoire sera créé avec la date et l'heure d'exécution de ce processus. Voulez-vous continuer?" 0 0
     ans=$?
     if [ $ans -eq 0 ]; then
         clear
         if [ -f /home/$usuario/gameandwatch/game-and-watch-backup/backups/flash_backup_$consola.bin ]; then
-            echo "flash_backup_$consola.bin encontrado"
+            echo "flash_backup_$consola.bin trouvé"
             sleep 1
             if [ -f /home/$usuario/gameandwatch/game-and-watch-backup/backups/internal_flash_backup_$consola.bin ]; then
-                echo "internal_flash_backup_$consola.bin encontrado"
+                echo "internal_flash_backup_$consola.bin trouvé"
                 sleep 1
                 if [ -d /home/$usuario/gameandwatch/firms/ ]; then
                     if [ -d /home/$usuario/gameandwatch/firms/$consola ]; then
@@ -130,55 +130,55 @@ case $menuitem in
                     rsync -ab /home/$usuario/gameandwatch/game-and-watch-backup/backups/*_$consola.bin /home/$usuario/gameandwatch/firms/$consola/$(date +%d-%m-%Y_%H:%M:%S)
                  fi
                 echo " "
-                echo "Se han copiado los archivos de la flash interna y externa"
+                echo "Les fichiers ont été copiés à partir de la flash interne et externe"
                 echo " "
                 sleep 2
             else
-                echo "No se ha encontrado internal_flash_backup_$consola.bin, cancelando..."
+                echo "internal_flash_backup_$consola.bin introuvable, annulation..."
                 sleep 2
             fi
         else
-            echo "No se ha encontrado flash_backup_$consola.bin, cancelando..."
+            echo "flash_backup_$consola.bin introuvable, annulation..."
             sleep 2
         fi
         #mkdir /home/$usuario/gameandwatch/firms/$(date +%d-%m-%Y_%H:%M:%S) | cp /home/$usuario/gameandwatch/game-and-watch-backup/backups/*.bin /home/$usuario/gameandwatch/firms/$(date +%d-%m-%Y_%H:%M:%S)
-        dialog --backtitle "G&W $consola - Utilidades de flasheo" \
-        --title "Realizar copia de seguridad del firmware descargado de Game&Watch $consola" \
-        --msgbox "Proceso realizado." 0 0
+        dialog --backtitle "G&W $consola - Utilitaires de flash" \
+        --title "Faire une copie de sécurite du firmware téléchargé de Game&Watch $consola" \
+        --msgbox "Processus effectué." 0 0
     else
-        dialog --backtitle "G&W $consola - Utilidades de flasheo" \
-        --title "Realizar copia de seguridad del firmware descargado de Game&Watch $consola" \
-        --msgbox "Proceso cancelado." 0 0
+        dialog --backtitle "G&W $consola - Utilitaires de flash" \
+        --title "Faire une copie de sécurite du firmware téléchargé de Game&Watch $consola" \
+        --msgbox "Processus annulé." 0 0
     fi
     ./scene/2.1-backup-restauracion.sh
     clear;;
   7)clear
-      dialog --backtitle "G&W $consola - Utilidades de flasheo" \
-    --title "Borrar firmware descargado de Game&Watch $consola" \
-    --yesno "Se realizara el borrado de los archivos del firmware descargados de la consola. SE RECOMIENDA ENCARECIDAMENTE tener copia de seguridad de dichos archivos. Los scripts no realizan la copia de seguridad de manera automatica por lo que se debera hacer de manera manual con la opcion 6 del menu \"Backup, restauracion y liberacion\". ¿Deseas continuar?" 0 0
+      dialog --backtitle "G&W $consola - Utilitaires de flash" \
+    --title "Supprimer le firmware téléchargé Game&Watch $consola" \
+    --yesno "Les fichiers du firmware téléchargés depuis la console seront supprimés. IL EST FORTEMENT RECOMMANDÉ d'avoir une sauvegarde de ces fichiers. Les scripts n'effectuent pas la sauvegarde automatiquement, elle doit donc être effectuée manuellement avec l'option 6 du menu \"Backup, restauration et déblocage\". ¿Voulez-vous continuer?" 0 0
     ans=$?
     if [ $ans -eq 0 ]; then
         clear
         if [ -f /home/$usuario/gameandwatch/game-and-watch-backup/backups/flash_backup_$consola.bin ]; then
-            echo "Borrando flash_backup.bin"
+            echo "Suppression flash_backup.bin"
             rm /home/$usuario/gameandwatch/game-and-watch-backup/backups/flash_backup_$consola.bin
         else
-            echo "No se ha encontrado flash_backup_$consola.bin"
+            echo "flash_backup_$consola.bin introuvable"
         fi
         if [ -f /home/$usuario/gameandwatch/game-and-watch-backup/backups/internal_flash_backup_$consola.bin ]; then
-            echo "Borrando internal_flash_backup.bin"
+            echo "Suppression internal_flash_backup.bin"
             rm /home/$usuario/gameandwatch/game-and-watch-backup/backups/internal_flash_backup_$consola.bin
          else
-             echo "No se ha encontrado internal_flash_backup_$consola.bin"
+             echo "internal_flash_backup_$consola.bin introuvable"
         fi
         sleep 3
-         dialog --backtitle "G&W $consola - Utilidades de flasheo" \
-        --title "Borrar firmware descargado de Game&Watch $consola" \
-        --msgbox "Proceso realizado." 0 0
+         dialog --backtitle "G&W $consola - Utilitaires de flash" \
+        --title "Supprimer le firmware téléchargé de Game&Watch $consola" \
+        --msgbox "Processus effectué." 0 0
     else
-        dialog --backtitle "G&W $consola - Utilidades de flasheo" \
-        --title "Borrar firmware descargado de Game&Watch $consola" \
-        --msgbox "Proceso cancelado." 0 0
+        dialog --backtitle "G&W $consola - Utilitaires de flash" \
+        --title "Supprimer le firmware téléchargé de Game&Watch $consola" \
+        --msgbox "Processus annulé." 0 0
     fi
     ./scene/2.1-backup-restauracion.sh
     clear;;

@@ -5,18 +5,18 @@ INPUT=/tmp/$MENU.sh.$$
 usuario="kde"
 consola="zelda"
 
-dialog --backtitle "G&W $consola - Utilidades de flasheo ------------------ INFO: 2-menu-scene-zelda.sh Usuario = $usuario   ////   Consola seleccionada = $consola ------------------" \
---title "Game&Watch $consola - menu de flasheo" \
+dialog --backtitle "G&W $consola - Utilitaires de flash ------------------ INFO: 2-menu-scene-zelda.sh Utilisateur = $usuario   ////   Console sélectionnée = $consola ------------------" \
+--title "Game&Watch $consola - menu de flash" \
 --ok-label Apply \
 --cancel-label Exit \
 --menu "
-Usuario actual: $usuario
-Consola seleccionada: $consola
+Utilisateur actuel: $usuario
+Console sélectionnée: $consola
 
-Selecciona con las flechas la opcion deseada:" 0 0 0 \
-   1 "Backup, restauracion y liberacion de la G&W $consola" \
-   2 "Instalacion Custom FirmWare (CFW) y RetroGo y backup/restauracion de save states en G&W $consola" \
-   3 "Generación roms Game&Watch" 2>"${INPUT}"
+Sélectionnez l'option souhaitée avec les flèches:" 0 0 0 \
+   1 "Backup, restauration et déblocage G&W $consola" \
+   2 "Installation du Custom FirmWare (CFW) et RetroGo et sbackup/restauration des états de sauvegarde dans G&W $consola" \
+   3 "Génération des Roms Game&Watch" 2>"${INPUT}"
 menuitem=$(<"${INPUT}")
 case $menuitem in
   1)clear
@@ -39,19 +39,19 @@ case $menuitem in
     ./2-menu-scene-$consola.sh
     clear;;
   3)clear
-    dialog --backtitle "G&W $consola - Utilidades de flasheo" \
-    --title "Generación roms Game&Watch" \
-    --yesno "Coloca tus roms y artworks de Game&Watch que desees transformar\nIMPORTANTE: Para que el script funcione deberas tener en cuenta lo siguiente:\n-Las roms deben ser del romset 0.229 de Mame, en formato No-merged y deben ser colocadas en el directorio\n/home/$usuario/gameandwatch/LCD-Game-Shrinker/input/rom\n-Los artworks deben copiarse al directorio /home/$usuario/gameandwatch/LCD-Game-Shrinker/input/artwork\n-Ambos archivos (rom y artwork) deben estar en formato zip y deben tener el mismo nombre.\n\nRecuerda: las roms convertidas las encontraras en home/$usuario/gameandwatch/LCD-Game-Shrinker/output" 0 0
+    dialog --backtitle "G&W $consola - Utilitaires de flash" \
+    --title "Génération des roms Game&Watch" \
+    --yesno "Placez vos roms Game&Watch et vos illustrations que vous souhaitez générer\nIMPORTANT: Pour que le script fonctionne, vous devez prendre en compte les éléments suivants:\n-Les roms doivent provenir du romset 0.229 de Mame, au format Non-Merged et doivent être placées dans le répertoire\n/home/$usuario/gameandwatch/LCD-Game-Shrinker/input/rom\n-Les artworks doivent être copiées dans le répertoire /home/$usuario/gameandwatch/LCD-Game-Shrinker/input/artwork\n-Les deux fichiers (rom et artwork) doivent être au format zip et doivent avoir le même nom.\n\nNOTES : vous trouverez les roms converties dans home/$usuario/gameandwatch/LCD-Game-Shrinker/output" 0 0
     ans=$?
     if [ $ans -eq 0 ]; then
         clear
         cd /home/$usuario/gameandwatch/LCD-Game-Shrinker/
         python3 shrink_it.py
         cd -
-        read -n 1 -s -r -p "Presiona cualquier tecla para continuar"
+        read -n 1 -s -r -p "Appuyez sur n'importe quelle touche pour continuer"
     else
-        echo "Proceso cancelado"
-		read -n 1 -s -r -p "Proceso realizado. Presiona cualquier tecla para continuar"
+        echo "Processus annulé"
+		read -n 1 -s -r -p "Processus effectué. Appuyez sur n'importe quelle touche pour continuer"
     fi
     ./2-menu-scene-$consola.sh
     clear;;
