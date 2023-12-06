@@ -58,7 +58,7 @@ pip3 install -r requirements.txt
 rm requirements.txt
 
 echo -e "\e[1;34mRequirements pour les paquets dépréciés\e[0m"
-pip3 install Pillow==9.5.0
+pip3 install --user Pillow==9.5.0 
 clear
 #cd /home/$usuario
 #if [ -d /home/$usuario/gameandwatch ]; then
